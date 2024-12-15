@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 require_once __DIR__ . "/web/landing.php";
 
-Route::prefix("dashboard")->middleware('auth')->group(function () {
+Route::prefix("dashboard")->middleware('auth', 'role:admin')->group(function () {
     require_once __DIR__ . "/web/dashboard.php";
 });
 
