@@ -38,10 +38,16 @@
                 ],
             ]">
                 <x-slot:additionalNav>
-                    <div class="space-x-8">
-                        <x-ui.link label="Daftar" />
-                        <x-ui.link label="Masuk" type="primary" href="/login" />
-                    </div>
+                    @guest
+                        <div class="space-x-8">
+                            <x-ui.link label="Daftar" />
+                            <x-ui.link label="Masuk" type="primary" href="/login" />
+                        </div>
+                    @endguest
+
+                    @auth
+                        <x-fragments.profile-user-nav />
+                    @endauth
                 </x-slot:additionalNav>
             </x-ui.navigation>
         </header>

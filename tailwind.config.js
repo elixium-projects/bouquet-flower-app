@@ -24,6 +24,7 @@ export default {
             light: "var(--light)",
             white: "#FFF",
             black: "#000",
+            "gray-100": "var(--gray-100)",
             "background-400": "var(--background-400)",
             "background-300": "var(--background-300)",
             "background-200": "var(--background-200)",
