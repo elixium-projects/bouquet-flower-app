@@ -7,7 +7,7 @@
     ],
 ])
 
-<nav class="py-6 shadow-sm">
+<nav class=" px-2 py-6 shadow-sm">
     <div class="container mx-auto">
         <div class="flex items-center justify-between">
             <div>
