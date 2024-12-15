@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $with = "Role";
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +48,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function getFullNameAttribute()
+    {
+        $attribute = $this->attributes;
+
+        return $attribute['first_name'] . " " . $attribute["last_name"];
+    }
+
+    public function Role()
+    {
+        return $this->hasOne(Role::class, "id");
     }
 }
