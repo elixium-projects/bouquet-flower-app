@@ -13,13 +13,18 @@
 </head>
 
 <body class="antialiased">
-    <div class="min-h-screen">
+    <div class="min-h-screen grid grid-cols-[280px_1fr]">
+        {{-- aside --}}
+        <x-fragments.sidebar-dashboard />
 
-        <header></header>
 
         <!-- Page Content -->
         <main>
-            @yield('content')
+            <x-fragments.header-dashboard />
+
+            <div class="p-8">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
