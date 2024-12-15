@@ -32,6 +32,7 @@ class UserAdminSeeder extends Seeder
                     "last_name" => "Admin",
                     "address" => fake()->address(),
                     "email" => "superadmin@boquentflower.com",
+                    "phone_number" =>  fake()->phoneNumber(),
                     "password" => Hash::make("Admin@123"),
                 ]);
             }
@@ -42,6 +43,7 @@ class UserAdminSeeder extends Seeder
                     "first_name" => "user",
                     "last_name" => "123",
                     "address" => fake()->address(),
+                    "phone_number" =>  fake()->phoneNumber(),
                     "email" => "user@boquentflower.com",
                     "password" => Hash::make("user123"),
                 ]);
