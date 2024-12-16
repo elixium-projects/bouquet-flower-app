@@ -53,7 +53,7 @@
         </main>
 
         <!-- section footer -->
-        <div class="container mt-10 bg-black">
+        <div class=" bg-black">
             <div class="mx-auto text-center justify-center mt-5">
                 <h3 class="text-3xl font-bold text-white pt-5">Logo ipsum</h3>
             </div>

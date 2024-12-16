@@ -5,10 +5,10 @@
 @section('content')
 
     <div class="m-5 ">
-        <div class="my-5">
+        <div class="my-5 mt-10">
             <h3 class="text-3xl">Galeri Keindahan Bunga Kami</h3>
         </div>
-        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 overflow-hidden">
+        <div class="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 overflow-hidden">
 
             <div>
                 <div class="bg-primary-500 w-full max-w-full h-[384px] mt-2">
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-        <div class="container mt-4 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 overflow-hidden">
+        <div class="mt-4 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 overflow-hidden">
 
             <div>
                 <div class="bg-primary-500 w-full max-w-full h-[384px] mt-2">

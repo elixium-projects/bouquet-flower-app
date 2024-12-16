@@ -3,7 +3,7 @@
 @section('title', 'ContactUs')
 
 @section('content')
-    <div class="p-5 mt-5 " id="hubungiKami">
+    <div class="p-5 mt-11" id="hubungiKami">
         <div class="flex justify-between m-5">
             <div>
                 <h3 class="text-4xl text-customeBlue font-bold">Kami Siap Mendengar Dari</h3>
@@ -28,7 +28,7 @@
 
 
             </div>
-            <div class=" border border-solid rounded-lg ">
+            <div class=" border border-solid rounded-lg mb-52 ">
                 <p class="text-2xl font-bold text-black p-5">Hubungi kami lewat formulir berikut: </p>
                 <form action="">
                     <div class="grid grid-cols-2 gap-2 m-5 drop-shadow-lg">

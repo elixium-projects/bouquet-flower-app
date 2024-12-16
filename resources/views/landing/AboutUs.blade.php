@@ -9,11 +9,11 @@
             <h3 class="text-3xl text-black">Menghadirkan Keindahan di Setiap Momen Spesial</h3>
         </div>
 
-        <div class="bg-primary-500 w-[1280px] max-w-full h-[400px] mt-5">
+        <div class="bg-primary-500  mx-auto w-full max-w-full h-[400px] mt-5">
             <img src="{{ asset('images/bg-aboutUs.jpg') }}" class="w-full h-full object-cover" alt="">
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 mx-auto mb-28">
             <p>Toko Yaya Flowers adalah salah satu toko yang khusus bergerak dalam penjualan bouquet bunga untuk berbagai
                 acara penting dan perayaan Istimewa. Toko ini melayani berbagai kebutuhan pelanggan yang ingin menghias
                 acara mereka dengan bunga-bunga segar dan indah, baik untuk merayakan hari valentine, hari ibu, ulang tahun,
