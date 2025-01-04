@@ -9,7 +9,7 @@ trait File
 {
     public function Upload($file, $path)
     {
-        $imageName = time() . "-" . str()->random(50) . "-" . $file->extension();
+        $imageName = time() . "-" . str()->random(50) . "." . $file->extension();
 
         FacadesStorage::disk("public")->putFileAs($path, $file, $imageName);
 

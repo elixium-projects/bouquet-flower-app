@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-
 @layer base {
     :root {
         --default: #252a3c;
@@ -47,6 +45,7 @@
         --danger-100: #fff5f8;
         --info-100: #c5e9ff;
         --info-500: #31b2ff;
+        --warning-500: #fdb022;
     }
 
     * {
