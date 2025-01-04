@@ -5,6 +5,7 @@
         [
             'label' => 'Beranda',
             'route' => 'dashboard.main',
+            'breadcrumbs' => ['Beranda'],
         ],
         [
             'label' => 'Pengguna',
@@ -12,7 +13,13 @@
         ],
         [
             'label' => 'Produk',
-            'route' => 'dashboard.product-management',
+            'route' => 'dashboard.product.index',
+            'breadcrumbs' => ['Kelola Produk'],
+        ],
+        [
+            'label' => 'Tambah Produk',
+            'route' => 'dashboard.product.create',
+            'breadcrumbs' => ['Kelola Produk', 'Tambah Produk'],
         ],
         [
             'label' => 'Transaksi',
@@ -30,7 +37,11 @@
     <div class="grid grid-cols-[6fr_1fr] gap-x-8 items-center">
         <ul class="breadcrumb">
             <li class="breadcrumb-content">Menu</li>
-            <li class="breadcrumb-content">{{ $activeMenu['label'] ?? 'Page' }}</li>
+            @isset($activeMenu['breadcrumbs'])
+                @foreach ($activeMenu['breadcrumbs'] as $breadcrumb)
+                    <li class="breadcrumb-content">{{ $breadcrumb }}</li>
+                @endforeach
+            @endisset
         </ul>
         <div class="flex items-center cursor-pointer select-none gap-x-4" id="profile">
             <div class="h-[32px] w-[1px] bg-[#AFAFAF]"></div>

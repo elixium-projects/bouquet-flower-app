@@ -1,5 +1,4 @@
 @php
-
     function ClassRouteActive($main)
     {
         $routeActive = Route::current()->getName();
@@ -11,18 +10,22 @@
         [
             'label' => 'Beranda',
             'route' => 'dashboard.main',
+            'icon' => 'fa-solid fa-house',
         ],
         [
             'label' => 'Pengguna',
             'route' => 'dashboard.user-management',
+            'icon' => 'fa-solid fa-user',
         ],
         [
             'label' => 'Produk',
-            'route' => 'dashboard.product-management',
+            'route' => 'dashboard.product.index',
+            'icon' => 'fa-solid fa-cube',
         ],
         [
             'label' => 'Transaksi',
             'route' => 'dashboard.transaction-management',
+            'icon' => 'fa-solid fa-sack-dollar',
         ],
     ];
 @endphp
@@ -38,7 +41,12 @@
 
     @foreach ($menus as $menu)
         <a href="{{ route($menu['route']) }}"
-            class="text-xl px-8 py-6 block {{ ClassRouteActive($menu['route']) }}">{{ $menu['label'] }}</a>
+            class="flex items-center gap-x-4 text-xl px-8 py-6 block {{ ClassRouteActive($menu['route']) }}">
+            @isset($menu['icon'])
+                <i class="{{ $menu['icon'] }}"></i>
+            @endisset
+            <span>{{ $menu['label'] }}</span>
+        </a>
     @endforeach
 
 </aside>

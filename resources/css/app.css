@@ -13,6 +13,7 @@
         --accent-2: #eef2f5;
         --light: #fbfcfe;
         --gray-100: #f3f4f6;
+        --background-100: #f6f6f7;
         --background-400: #f6f8fc;
         --background-300: #edeeef;
         --background-200: #f1f2f3;
@@ -72,6 +73,12 @@
     }
     h3 {
         @apply text-[32px] leading-9;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 }
 

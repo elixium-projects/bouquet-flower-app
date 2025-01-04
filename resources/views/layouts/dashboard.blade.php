@@ -10,6 +10,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @include('scripts.script')
 </head>
 
 <body class="antialiased">
@@ -27,6 +29,8 @@
             </div>
         </main>
     </div>
+
+    @stack('scripts')
 </body>
 
 </html>
