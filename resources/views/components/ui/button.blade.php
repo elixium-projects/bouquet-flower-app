@@ -7,6 +7,15 @@
 @php
     $buttonColor = '';
     switch ($buttonType) {
+        case 'info':
+            $buttonColor = 'bg-info-500 text-white';
+            break;
+        case 'warning':
+            $buttonColor = 'bg-warning-500 text-white';
+            break;
+        case 'danger':
+            $buttonColor = 'bg-danger-500 text-white';
+            break;
         case 'secondary':
             $buttonColor = 'bg-transparent text-primary-400';
             break;

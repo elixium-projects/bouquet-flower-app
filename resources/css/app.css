@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-
 @layer base {
     :root {
         --default: #252a3c;
@@ -13,6 +11,7 @@
         --accent-2: #eef2f5;
         --light: #fbfcfe;
         --gray-100: #f3f4f6;
+        --background-100: #f6f6f7;
         --background-400: #f6f8fc;
         --background-300: #edeeef;
         --background-200: #f1f2f3;
@@ -44,6 +43,9 @@
         --danger-300: #fdb2c4;
         --danger-200: #ffecf0;
         --danger-100: #fff5f8;
+        --info-100: #c5e9ff;
+        --info-500: #31b2ff;
+        --warning-500: #fdb022;
     }
 
     * {
@@ -70,5 +72,29 @@
     }
     h3 {
         @apply text-[32px] leading-9;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+@layer components {
+    .breadcrumb {
+        @apply flex items-center;
+    }
+
+    .breadcrumb-content {
+        @apply text-2xl;
+    }
+
+    .breadcrumb-content::after {
+        content: ">";
+        padding: 0px 1rem;
+    }
+    .breadcrumb-content:last-child::after {
+        content: "";
     }
 }
