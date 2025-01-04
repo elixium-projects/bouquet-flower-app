@@ -56,6 +56,8 @@ export default {
             "danger-300": "var(--danger-300)",
             "danger-200": "var(--danger-200)",
             "danger-100": "var(--danger-100)",
+            "info-100": "var(--info-100)",
+            "info-500": "var(--info-500)",
         },
     },
     plugins: [],

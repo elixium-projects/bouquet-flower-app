@@ -44,6 +44,8 @@
         --danger-300: #fdb2c4;
         --danger-200: #ffecf0;
         --danger-100: #fff5f8;
+        --info-100: #c5e9ff;
+        --info-500: #31b2ff;
     }
 
     * {
@@ -70,5 +72,23 @@
     }
     h3 {
         @apply text-[32px] leading-9;
+    }
+}
+
+@layer components {
+    .breadcrumb {
+        @apply flex items-center;
+    }
+
+    .breadcrumb-content {
+        @apply text-2xl;
+    }
+
+    .breadcrumb-content::after {
+        content: ">";
+        padding: 0px 1rem;
+    }
+    .breadcrumb-content:last-child::after {
+        content: "";
     }
 }
