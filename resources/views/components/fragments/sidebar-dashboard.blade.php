@@ -41,7 +41,7 @@
 
     @foreach ($menus as $menu)
         <a href="{{ route($menu['route']) }}"
-            class="flex items-center gap-x-4 text-xl px-8 py-6 block {{ ClassRouteActive($menu['route']) }}">
+            class="flex items-center gap-x-4 text-xl px-8 py-6 {{ ClassRouteActive($menu['route']) }}">
             @isset($menu['icon'])
                 <i class="{{ $menu['icon'] }}"></i>
             @endisset
