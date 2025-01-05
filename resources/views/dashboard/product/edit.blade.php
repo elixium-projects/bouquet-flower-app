@@ -6,9 +6,10 @@
             <h3 class="mb-6">Edit Produk</h3>
         </div>
 
-        <form action="{{ route('dashboard.product.create-post') }}" method="post" autocomplete="off"
+        <form action="{{ route('dashboard.product.update', ['product' => $product->id]) }}" method="post" autocomplete="off"
             enctype="multipart/form-data">
             @csrf
+            @method('put')
 
             <div class="mb-4">
                 <h4 class="mb-6 text-lg text-center">Foto Produk</h4>
@@ -74,19 +75,8 @@
                     <x-ui.input-count name="stock" value="{{ $product->stock ?? 0 }}" />
                 </x-ui.form-group>
             </div>
-            <div class="grid gap-5 lg:grid-cols-3">
-                <x-ui.form-group>
-                    <x-ui.input-label value="Ukuran" for="product_size" :isRequired="true" />
-                    <x-ui.input-element type="text" name="product_size" id="product_size"
-                        placeholder="Masukan ukuran produk" :validate="$errors->has('product_size')" value="{{ $product->product_dimension }}" />
-                    <span>Masukkan dimensi produk (panjang x lebar) dalam satuan cm.</span>
-                    @error('product_name')
-                        <span class="block mt-1 text-danger-500">{{ $message }}</span>
-                    @enderror
-                </x-ui.form-group>
-            </div>
 
-            <x-ui.button buttonType="primary" type="submit" label="Tambah Produk" class="w-full rounded-lg" />
+            <x-ui.button buttonType="primary" type="submit" label="Perbaharui Produk" class="w-full rounded-lg" />
         </form>
     </x-ui.card>
 

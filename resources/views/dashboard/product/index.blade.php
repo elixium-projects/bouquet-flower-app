@@ -38,11 +38,6 @@
                     <x-ui.table-td class="text-center">{{ $product->stock }}</x-ui.table-td>
                     <x-ui.table-td class="text-center">
                         <div class="flex items-center justify-center gap-4">
-                            <x-ui.button type="button" buttonType="info" class="rounded-lg !py-3 !px-4">
-                                <x-slot:label>
-                                    <i class="fa-solid fa-eye size-4"></i>
-                                </x-slot:label>
-                            </x-ui.button>
                             <x-ui.button type="button" buttonType="warning" class="rounded-lg !py-3 !px-4" x-data
                                 x-on:click="() => window.location.href = '{{ route('dashboard.product.edit', ['product' => $product->id]) }}'">
                                 <x-slot:label>

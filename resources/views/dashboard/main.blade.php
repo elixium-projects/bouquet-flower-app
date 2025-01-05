@@ -6,14 +6,14 @@
             <x-slot:icon>
                 <x-fas-user class="text-info-500 size-14" />
             </x-slot:icon>
-            <x-slot:count>320</x-slot:count>
+            <x-slot:count>{{ $totalUser }}</x-slot:count>
             <x-slot:label>Total Pengguna</x-slot:label>
         </x-fragments.card-status-count>
         <x-fragments.card-status-count>
             <x-slot:icon>
                 <x-fas-box class="text-info-500 size-14" />
             </x-slot:icon>
-            <x-slot:count>320</x-slot:count>
+            <x-slot:count>{{ $totalProduct }}</x-slot:count>
             <x-slot:label>Total Produk</x-slot:label>
         </x-fragments.card-status-count>
         <x-fragments.card-status-count>

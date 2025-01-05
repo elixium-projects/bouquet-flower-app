@@ -72,17 +72,6 @@
                     <x-ui.input-count name="stock" value="{{ old('stock') ?? 0 }}" />
                 </x-ui.form-group>
             </div>
-            <div class="grid gap-5 lg:grid-cols-3">
-                <x-ui.form-group>
-                    <x-ui.input-label value="Ukuran" for="product_size" :isRequired="true" />
-                    <x-ui.input-element type="text" name="product_size" id="product_size"
-                        placeholder="Masukan ukuran produk" :validate="$errors->has('product_size')" value="{{ old('product_size') }}" />
-                    <span>Masukkan dimensi produk (panjang x lebar) dalam satuan cm.</span>
-                    @error('product_name')
-                        <span class="block mt-1 text-danger-500">{{ $message }}</span>
-                    @enderror
-                </x-ui.form-group>
-            </div>
 
             <x-ui.button buttonType="primary" type="submit" label="Tambah Produk" class="w-full rounded-lg" />
         </form>

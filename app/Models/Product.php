@@ -21,7 +21,6 @@ class Product extends Model
         "price",
         "stock",
         "thumbnail",
-        "product_dimension",
         "status",
         "created_at",
         "updated_at"
