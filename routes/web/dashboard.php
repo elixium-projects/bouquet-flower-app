@@ -2,19 +2,27 @@
 
 use App\Http\Controllers\Dashboard\ProductCategoryController;
 use App\Http\Controllers\Dashboard\ProductController;
+use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", function () {
     $pageLabel = "Beranda";
 
-    return view("dashboard.main", compact('pageLabel'));
+    $totalUser = User::withWhereHas("role", fn($query) => $query->where("name", "user"))->count();
+    $totalProduct = Product::count();
+
+    return view("dashboard.main", compact('pageLabel', 'totalProduct', 'totalUser'));
 })->name("dashboard.main");
 
 Route::prefix("products")->controller(ProductController::class)->group(function () {
     Route::get("/", 'IndexPage')->name('dashboard.product.index');
     Route::get("/create", 'CreatePage')->name('dashboard.product.create');
     Route::post("/create", "CreateProduct")->name('dashboard.product.create-post');
+    Route::delete("/delete/{product}", "DeleteProduct")->name("dashboard.product.delete");
+    Route::get("/edit/{product}", "EditPage")->name("dashboard.product.edit");
+    Route::put("/update/{product}", "UpdateProduct")->name("dashboard.product.update");
 });
 
 Route::prefix("product-category")->controller(ProductCategoryController::class)->group(function () {

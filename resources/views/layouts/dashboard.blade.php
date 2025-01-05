@@ -19,15 +19,30 @@
 <body class="antialiased">
 
     @session('message')
-        <x-ui.alert>{{ session('message') }}</x-ui.alert>
+        <x-ui.alert>
+            <div class="flex items-center gap-4">
+                <i class="fa-solid fa-check"></i>
+                <span>{{ session('message') }}</span>
+            </div>
+        </x-ui.alert>
     @endsession
 
     @if ($errors->has('category_name'))
-        <x-ui.alert type="error">{{ $errors->first('category_name') }}</x-ui.alert>
+        <x-ui.alert type="warning">
+            <div class="flex items-center gap-4">
+                <i class="fa-solid fa-warning"></i>
+                {{ $errors->first('category_name') }}
+            </div>
+        </x-ui.alert>
     @endif
 
     @session('error')
-        <x-ui.alert type="error">{{ session('error') }}</x-ui.alert>
+        <x-ui.alert type="error">
+            <div class="flex items-center gap-4">
+                <i class="fa-solid fa-warning"></i>
+                <span>{{ session('error') }}</span>
+            </div>
+        </x-ui.alert>
     @endsession
 
     <div class="min-h-screen grid grid-cols-[280px_1fr]">

@@ -25,7 +25,6 @@ return new class extends Migration
             $table->decimal("price");
             $table->integer("stock")->default(0);
             $table->string("thumbnail");
-            $table->string("product_dimension");
             $table->enum("status", ["active", "inactive"]);
             $table->timestamps();
         });
