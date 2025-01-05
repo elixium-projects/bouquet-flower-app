@@ -92,4 +92,10 @@ class ProductController extends Controller
             ], 500);
         }
     }
+
+    public function EditPage(Product $product)
+    {
+        $categories = ProductCategory::all();
+        return view('dashboard.product.edit', compact('product', 'categories'));
+    }
 }

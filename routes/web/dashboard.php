@@ -16,6 +16,7 @@ Route::prefix("products")->controller(ProductController::class)->group(function 
     Route::get("/create", 'CreatePage')->name('dashboard.product.create');
     Route::post("/create", "CreateProduct")->name('dashboard.product.create-post');
     Route::delete("/delete/{product}", "DeleteProduct")->name("dashboard.product.delete");
+    Route::get("/edit/{product}", "EditPage")->name("dashboard.product.edit");
 });
 
 Route::prefix("product-category")->controller(ProductCategoryController::class)->group(function () {

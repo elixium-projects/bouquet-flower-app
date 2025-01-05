@@ -3,7 +3,7 @@
 @section('content')
     <x-ui.card>
         <div class="mb-4">
-            <h3 class="mb-6">Tambah Produk</h3>
+            <h3 class="mb-6">Edit Produk</h3>
         </div>
 
         <form action="{{ route('dashboard.product.create-post') }}" method="post" autocomplete="off"
@@ -15,7 +15,8 @@
                 <x-ui.input-label for="img_file_upload"
                     class="relative mx-auto overflow-hidden text-center rounded-full cursor-pointer bg-surface-700 size-36 place-content-center">
                     <x-slot:value>
-                        <img id="image_upload_preview" class="absolute inset-0 hidden object-cover w-full h-full">
+                        <img src="{{ $product->thumbnailURL }}" id="image_upload_preview"
+                            class="absolute inset-0 object-cover w-full h-full">
                         <i class="text-xl fa-solid fa-plus bg-secondary"></i>
                     </x-slot:value>
                 </x-ui.input-label>
@@ -29,7 +30,7 @@
             <x-ui.form-group>
                 <x-ui.input-label value="Nama Produk" for="product_name" :isRequired="true" />
                 <x-ui.input-element type="text" name="product_name" id="product_name" placeholder="Masukan nama produk"
-                    :validate="$errors->has('product_name')" value="{{ old('product_name') }}" />
+                    :validate="$errors->has('product_name')" value="{{ $product->name }}" />
                 @error('product_name')
                     <span class="block mt-1 text-danger-500">{{ $message }}</span>
                 @enderror
@@ -38,7 +39,7 @@
                 <x-ui.input-label value="Deskripsi Produk" for="description" :isRequired="true" />
                 <x-ui.textarea name="description" id="description"
                     placeholder="Masukkan deskripsi produk secara detail di sini"
-                    :validate="$errors->has('description')">{{ old('description') }}</x-ui.textarea>
+                    :validate="$errors->has('description')">{{ $product->description }}</x-ui.textarea>
                 @error('description')
                     <span class="block mt-1 text-danger-500">{{ $message }}</span>
                 @enderror
@@ -49,7 +50,8 @@
                     <x-ui.select name="category" id="category" :validate="$errors->has('category')">
                         <option value="" disabled selected>Pilih kategori produk</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                            <option value="{{ $category['id'] }}" @if ($category->id == $product->category_id) selected @endif>
+                                {{ $category['name'] }}</option>
                         @endforeach
                     </x-ui.select>
                     <button x-data type="button" class="text-left text-primary-500"
@@ -62,21 +64,21 @@
                 <x-ui.form-group>
                     <x-ui.input-label value="Harga produk" for="price_number_input" :isRequired="true" />
                     <x-ui.input-element name="price" id="price_number_input" :validate="$errors->has('price')"
-                        placeholder="Masukkan harga produk di sini" value="{{ old('price') }}" />
+                        placeholder="Masukkan harga produk di sini" value="{{ $product->price }}" />
                     @error('price')
                         <span class="block mt-1 text-danger-500">{{ $message }}</span>
                     @enderror
                 </x-ui.form-group>
                 <x-ui.form-group>
                     <x-ui.input-label value="Stock produk" for="price_number_input" :isRequired="true" />
-                    <x-ui.input-count name="stock" value="{{ old('stock') ?? 0 }}" />
+                    <x-ui.input-count name="stock" value="{{ $product->stock ?? 0 }}" />
                 </x-ui.form-group>
             </div>
             <div class="grid gap-5 lg:grid-cols-3">
                 <x-ui.form-group>
                     <x-ui.input-label value="Ukuran" for="product_size" :isRequired="true" />
                     <x-ui.input-element type="text" name="product_size" id="product_size"
-                        placeholder="Masukan ukuran produk" :validate="$errors->has('product_size')" value="{{ old('product_size') }}" />
+                        placeholder="Masukan ukuran produk" :validate="$errors->has('product_size')" value="{{ $product->product_dimension }}" />
                     <span>Masukkan dimensi produk (panjang x lebar) dalam satuan cm.</span>
                     @error('product_name')
                         <span class="block mt-1 text-danger-500">{{ $message }}</span>
