@@ -13,6 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                playfair: ['"Playfair Display"', "serif"],
             },
         },
         colors: {
@@ -61,6 +62,7 @@ export default {
             "info-500": "var(--info-500)",
             "success-500": "var(--success-500)",
             "warning-500": "var(--warning-500)",
+            "green-500": "rgb(34 197 94 / var(--tw-bg-opacity, 1))",
         },
     },
     plugins: [],
