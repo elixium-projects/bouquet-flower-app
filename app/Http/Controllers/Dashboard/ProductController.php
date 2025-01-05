@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Traits\File;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,7 @@ class ProductController extends Controller
 
     public function IndexPage()
     {
-        $products = Product::with("category")->get();
+        $products = Product::with("category")->paginate(5);
 
         return view("dashboard.product.index", compact('products'));
     }
@@ -63,5 +65,31 @@ class ProductController extends Controller
         }
 
         return to_route("dashboard.product.index")->with("message", "Produk berhasil ditambahkan");
+    }
+
+    public function DeleteProduct(Product $product)
+    {
+        $thumbnailProduct = "images/thumbnail/" . $product->thumbnail;
+        try {
+            DB::beginTransaction();
+
+            $product->delete();
+            $isDeleted = $this->DeleteFile($thumbnailProduct);
+
+            if (!$isDeleted) {
+                throw new Exception("Failed delete image");
+            }
+
+            DB::commit();
+
+            return response()->json([
+                "message" => "Product removed"
+            ], 200);
+        } catch (\Exception $err) {
+            DB::rollBack();
+            return response()->json([
+                "message" => "Failed remove product"
+            ], 500);
+        }
     }
 }

@@ -59,6 +59,7 @@ export default {
             "danger-100": "var(--danger-100)",
             "info-100": "var(--info-100)",
             "info-500": "var(--info-500)",
+            "success-500": "var(--success-500)",
             "warning-500": "var(--warning-500)",
         },
     },

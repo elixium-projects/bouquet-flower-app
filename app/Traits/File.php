@@ -15,4 +15,9 @@ trait File
 
         return $imageName;
     }
+
+    public function DeleteFile($filePath)
+    {
+        return FacadesStorage::disk('public')->delete($filePath);
+    }
 }

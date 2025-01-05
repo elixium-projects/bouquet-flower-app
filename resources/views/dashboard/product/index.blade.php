@@ -24,9 +24,9 @@
                 @endforeach
             </tr>
 
-            @forelse ($products as $product)
+            @forelse ($products as $index => $product)
                 <tr>
-                    <x-ui.table-td class="text-center">{{ $product->id }}</x-ui.table-td>
+                    <x-ui.table-td class="text-center">{{ $products->firstItem() + $index }}</x-ui.table-td>
                     <x-ui.table-td class="text-center">
                         <div class="relative mx-auto overflow-hidden size-32">
                             <img src="{{ $product->thumbnailURL }}" alt="thumbnail" class="object-cover w-full h-full" />
@@ -48,7 +48,11 @@
                                     <i class="fa-solid fa-pencil size-4"></i>
                                 </x-slot:label>
                             </x-ui.button>
-                            <x-ui.button buttonType="danger" class="rounded-lg !py-3 !px-4">
+                            <x-ui.button buttonType="danger" class="rounded-lg !py-3 !px-4" x-data
+                                x-on:click="() =>
+                                $dispatch('open-modal', {name:'delete_modal'})
+                                $dispatch('set-product-id', '{{ $product->id }}')
+                                ">
                                 <x-slot:label>
                                     <i class="fa-solid fa-trash size-4"></i>
                                 </x-slot:label>
@@ -62,5 +66,44 @@
                 </tr>
             @endforelse
         </x-ui.table>
+        {{ $products->links() }}
     </x-ui.card>
+
+    <x-ui.modal title="" name="delete_modal">
+        <div x-data="{ productId: '' }" x-on:set-product-id.window="productId = $event.detail">
+            <h1 class="mb-5 text-center">Konfirmasi Penghapusan Produk</h1>
+            <p class="text-center">
+                Apakah Anda yakin ingin menghapus produk ini dari daftar? Tindakan ini tidak dapat dibatalkan.
+            </p>
+            <div class="flex items-center justify-center gap-4 mt-6">
+                <x-ui.button type="button" label="Batal" x-on:click="$dispatch('close-modal', {name:'delete_modal'})"
+                    class="w-full text-lg rounded-lg" buttonType="outline-primary" />
+                <x-ui.button type="button" label="Ya, Hapus Produk" x-on:click="DeleteProduct(productId)"
+                    class="w-full text-lg rounded-lg" />
+            </div>
+        </div>
+    </x-ui.modal>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        async function DeleteProduct(id) {
+            try {
+                const resDelete = await axios({
+                    method: "delete",
+                    url: `${window.location.origin}/dashboard/products/delete/${id}`
+                })
+
+                if (resDelete.status === 200) {
+                    window.location.reload();
+                }
+
+            } catch (err) {
+                console.error(err)
+                $dispatch('close-modal', {
+                    name: 'delete_modal'
+                })
+            }
+        }
+    </script>
+@endpush

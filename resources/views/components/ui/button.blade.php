@@ -19,6 +19,9 @@
         case 'secondary':
             $buttonColor = 'bg-transparent text-primary-400';
             break;
+        case 'outline-primary':
+            $buttonColor = 'border border-primary-500 text-primary-500 bg-white';
+            break;
         default:
             $buttonColor = 'bg-primary-500 text-white';
     }
