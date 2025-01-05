@@ -36,4 +36,14 @@ class landingController extends Controller
     {
         return view('landing.detailProduk');
     }
+
+    public function keranjangBelanja()
+    {
+        return view('landing.keranjangBelanja');
+    }
+
+    public function produkDisukai()
+    {
+        return view('landing.produkDisukai');
+    }
 }

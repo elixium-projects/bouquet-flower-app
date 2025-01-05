@@ -4,14 +4,14 @@
 
 @section('content')
 
-    <div class="flex h-full">
+    <div class="flex h-full xl:mx-2 lg:mx-[185px]">
         <!-- Sidebar -->
         <div class="flex flex-col w-64 h-full  text-white">
-            <div class="ms-5 mt-5 text-[24px] font-bold text-black">
+            <div class=" mt-5 text-[24px] font-bold text-black">
                 Filter
             </div>
 
-            <div class="ms-5 mt-5">
+            <div class=" mt-5">
                 <div class="text-[20px] font-bold text-black">
                     Harga
                 </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="ms-5 mt-5">
+            <div class=" mt-5">
                 <div class="text-[20px] font-bold text-black">
                     Kategori
                 </div>
@@ -66,7 +66,49 @@
                     </div>
                 @endfor
             </div>
+
+            <div class="flex justify-center mt-10 pb-5">
+                <nav aria-label="Pagination">
+                    <ul class="inline-flex items-center">
+
+                        <li>
+                            <a href="#"
+                                class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
+                                aria-label="Previous">
+                                &laquo;
+                            </a>
+                        </li>
+
+
+                        @for ($a = 1; $a <= 25; $a++)
+                            @if ($a <= 3 || $a > 22)
+                                <li>
+                                    <a href="#"
+                                        class="px-4 py-2 text-gray-500  hover:bg-gray-200 hover:text-gray-600">
+                                        {{ $a }}
+                                    </a>
+                                </li>
+                            @elseif ($a == 4)
+                                <li>
+                                    <span class="px-4 py-2 text-gray-500  hover:bg-gray-200 hover:text-gray-600">...</span>
+                                </li>
+                            @endif
+                        @endfor
+
+
+                        <li>
+                            <a href="#"
+                                class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
+                                aria-label="Next">
+                                &raquo;
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
+
+
     </div>
 
 

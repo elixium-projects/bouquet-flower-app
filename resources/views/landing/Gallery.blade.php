@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="m-5 ">
+    <div class="xl:mx-2 lg:mx-[185px]">
         <div class="my-5 mt-10">
             <h3 class="text-3xl">Galeri Keindahan Bunga Kami</h3>
         </div>

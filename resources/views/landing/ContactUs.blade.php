@@ -3,17 +3,16 @@
 @section('title', 'ContactUs')
 
 @section('content')
-    <div class="p-5 mt-11" id="hubungiKami">
-        <div class="flex justify-between m-5">
-            <div>
-                <h3 class="text-4xl text-customeBlue font-bold">Kami Siap Mendengar Dari</h3>
-                <h3 class="text-4xl text-customeBlue font-bold">Anda</h3>
+    <div class="mx-2 mt-11 mb-20 ">
+        <div class="flex justify-between ">
+            <div class="w-[604px] h-[373px]">
+                <div class="text-[48px] font-bold font-playfair">Kami Siap Mendengar Dari Anda</div>
 
                 <div class="mt-5">
-                    <p class="text-xs text-customeBlue ">Punya pertanyaan, masukan, atau butuh bantuan memilih membantu
-                        Anda!</p>
-                    <p class="text-xs text-customeBlue"> bouquet? Hubungi kami – kami dengan senang hati akan</p>
-                    <p class="text-xs text-customeBlue">membantu Anda!</p>
+                    <div class="text-[20px] font-playfair">Punya pertanyaan, masukan, atau butuh bantuan memilih membantu
+                        Anda!</div>
+                    <div class="text-[20px] font-playfair"> bouquet? Hubungi kami – kami dengan senang hati akan</div>
+                    <div class="text-[20px] font-playfair">membantu Anda!</div>
                 </div>
 
                 <div class="mt-5 ">
@@ -28,33 +27,50 @@
 
 
             </div>
-            <div class=" border border-solid rounded-lg mb-52 ">
-                <p class="text-2xl font-bold text-black p-5">Hubungi kami lewat formulir berikut: </p>
-                <form action="">
-                    <div class="grid grid-cols-2 gap-2 m-5 drop-shadow-lg">
-                        <div>
-                            <input type="text" class="w-full px-3 py-2 text-xs border rounded-lg border-black text-black"
-                                placeholder="Tulis Nama Lengkap Anda" />
+
+            <div class=" border border-solid rounded-lg  w-[604px] h-[427px] ">
+                <div class="mt-2">
+                    <p class="text-[24px] font-bold font-playfair text-black p-5">Hubungi kami lewat
+                        formulir
+                        berikut: </p>
+
+
+
+                    <form action="{{ route('contact.send') }}" method="POST">
+                        @csrf
+
+                        @if (session('success'))
+                            <div class="text-center mx-6 rounded-lg p-1 bg-green-500 text-white">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        <div class="grid grid-cols-2 gap-2 m-5 drop-shadow-lg">
+                            <div>
+                                <input type="text" name="name" required
+                                    class="w-full px-3 py-2 text-xs border rounded-lg border-black text-black"
+                                    placeholder="Tulis Nama Lengkap Anda" />
+                            </div>
+                            <div>
+                                <input type="email" name="email" required
+                                    class="w-full px-3 py-2 text-xs border rounded-lg border-black text-black"
+                                    placeholder="Tulis Alamat Email Anda" />
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" class="w-full px-3 py-2 text-xs border rounded-lg border-black text-black"
-                                placeholder="Tulis Alamat Email Anda" />
+
+                        <div class="m-5">
+                            <textarea name="message" rows="8" required
+                                class="w-full px-3 py-2 text-xs border rounded-lg text-black border-black"
+                                placeholder="Ceritakan kebutuhan atau pertanyaan Anda di sini."></textarea>
                         </div>
-                    </div>
 
-                    <div class="m-5">
-                        <textarea rows="4" class="w-full px-3 py-2 text-xs border rounded-lg text-black border-black"
-                            placeholder="Ceritakan kebutuhan atau pertanyaan Anda di sini."></textarea>
-                    </div>
+                        <div class="flex justify-center m-5">
+                            <button type="submit" class="px-48 py-2 bg-primary-500 w-full text-white border rounded-lg">
+                                Hubungi Kami
+                            </button>
+                        </div>
+                    </form>
 
-                    <div class=" flex justify-center  m-5">
-                        <button type="submit" class="px-48 py-2 bg-primary-500 text-white border rounded-lg">
-                            Hubungi Kami
-                        </button>
-                    </div>
-
-
-                </form>
+                </div>
             </div>
         </div>
     </div>

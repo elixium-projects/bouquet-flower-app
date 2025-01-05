@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <div class="m-5">
-        <div class="mx-auto justify-center text-center">
+    <div class="xl:mx-2 lg:mx-[185px]">
+        <div class="mx-auto justify-center text-center mt-10">
             <h3 class="text-3xl text-black">Menghadirkan Keindahan di Setiap Momen Spesial</h3>
         </div>
 

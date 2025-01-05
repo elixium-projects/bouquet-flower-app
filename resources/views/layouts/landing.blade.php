@@ -12,8 +12,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased">
-    <div class="min-h-screen">
+<body class=" antialiased">
+    <div class="min-h-screen ">
 
         <header>
             <x-ui.navigation :menus="[
@@ -53,7 +53,7 @@
         </main>
 
         <!-- section footer -->
-        <div class=" bg-black">
+        <div class=" bg-black w-full">
             <div class="mx-auto text-center justify-center mt-5">
                 <h3 class="text-3xl font-bold text-white pt-5">Logo ipsum</h3>
             </div>
