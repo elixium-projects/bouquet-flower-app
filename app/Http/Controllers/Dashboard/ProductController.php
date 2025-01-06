@@ -35,7 +35,6 @@ class ProductController extends Controller
             "product_name" => "required|regex:/^[a-zA-Z0-9 ]+$/u",
             "description" => "required|min:10",
             "price" => "required",
-            "product_size" => "required",
             "stock" => "required",
             "category" => "required"
         ]);
