@@ -11,29 +11,23 @@
 
         <div class="flex mt-10 mb-20 w-[1,240px] h-[588px]">
             <div class="grid grid-rows-3 gap-5 w-full lg:w-[180px] me-10">
-                <div class="bg-primary-500 rounded-lg w-[180px] h-[180px] overflow-hidden">
-                    <img src="{{ asset('images/produk.png') }}" class="w-full h-full object-cover" alt="Produk 1">
-                </div>
-                <div class="bg-primary-500 rounded-lg w-[180px] h-[180px] overflow-hidden">
-                    <img src="{{ asset('images/produk.png') }}" class="w-full h-full object-cover" alt="Produk 2">
-                </div>
-                <div class="bg-primary-500 rounded-lg w-[180px] h-[180px] overflow-hidden">
-                    <img src="{{ asset('images/produk.png') }}" class="w-full h-full object-cover" alt="Produk 3">
-                </div>
+                @for ($a = 1; $a <= 3; $a++)
+                    <div class="bg-primary-500 rounded-lg w-[180px] h-[180px] overflow-hidden">
+                        <img src="{{ $product->thumbnailURL }}" class="w-full h-full object-cover" alt="Produk 1">
+                    </div>
+                @endfor
             </div>
 
             <div class="bg-primary-500 rounded-lg  w-[498px] h-[588px] overflow-hidden me-10">
-                <img src="{{ asset('images/produk.png') }}" class="w-full h-full object-cover" alt="Produk besar">
+                <img src="{{ $product->thumbnailURL }}" class="w-full h-full object-cover" alt="Produk besar">
             </div>
 
             <div class="w-[496px] h-[486px]">
-                <h3 class="text-[48px] font-bold text-black">HOT</h3>
-                <h3 class="text-[48px] mt-4 font-bold text-black">Romance</h3>
-                <h3 class="text-[32px] mt-4 font-bold text-primary-500">Rp 459.000</h3>
+                <h3 class="text-[48px] mt-4 font-bold text-black">{{ $product->name }}</h3>
+                <h3 class="text-[32px] mt-4 font-bold text-primary-500">Rp.{{ $product->price }}</h3>
 
                 <p class="mt-5 text-[20px]">
-                    Buket mawar merah dengan statice putih, melambangkan cinta sejati dan ketulusan. Hadiah sempurna untuk
-                    menyampaikan perasaan tanpa kata.
+                    {{ $product->description }}
                 </p>
 
                 <div>

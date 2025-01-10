@@ -3,7 +3,7 @@
 @section('title', 'ContactUs')
 
 @section('content')
-    <div class="mx-2 mt-11 mb-20 ">
+    <div class="mx-2 mt-11 mb-52 ">
         <div class="flex justify-between ">
             <div class="w-[604px] h-[373px]">
                 <div class="text-[48px] font-bold font-playfair">Kami Siap Mendengar Dari Anda</div>

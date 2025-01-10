@@ -3,7 +3,7 @@
 @section('title', 'Keranjang Belanja')
 
 @section('content')
-    <div class="xl:mx-2 lg:mx-[185px]">
+    <div class="xl:mx-2 lg:mx-[185px] mb-24">
 
         <div class="text-[40px] mt-5">
             Keranjang Belanja
@@ -14,7 +14,7 @@
             <div class="col-span-2 flex  mx-2 mt-5  w-[848px] h-[270px]">
                 <table class="table-auto">
                     <thead>
-                        <tr class="text-second text-left text-[16px] bg-gray-100">
+                        <tr class="text-second text-left text-[16px]">
                             <th class="px-7 py-2">Produk</th>
                             <th class="px-4 py-2">Kuantiti</th>
                             <th class="px-4 py-2">Harga</th>
