@@ -43,10 +43,22 @@
                 @endforeach
             @endisset
         </ul>
-        <div class="flex items-center cursor-pointer select-none gap-x-4" id="profile">
-            <div class="h-[32px] w-[1px] bg-[#AFAFAF]"></div>
-            <img src="{{ asset('img/' . $user->profile_img) }}" class="rounded-full size-14" />
-            <h4 class="text-xl font-medium select-none">{{ $user->full_name }}</h4>
+        <div class="relative" x-data="{ profileDropdown: false }">
+            <div class="flex items-center cursor-pointer select-none gap-x-4" id="profile"
+                x-on:click="() => profileDropdown = !profileDropdown">
+                <div class="h-[32px] w-[1px] bg-[#AFAFAF]"></div>
+                <img src="{{ asset('img/' . $user->profile_img) }}" class="rounded-full size-14" />
+                <h4 class="text-xl font-medium select-none">{{ $user->full_name }}</h4>
+            </div>
+            <div class="absolute z-10 bg-white shadow-lg top-[65px] left-0 w-full" x-show="profileDropdown">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="w-full px-4 py-3 text-left hover:bg-primary-200">
+                        <i class="mr-2 fa-solid fa-right-from-bracket"></i>
+                        <span>Keluar</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </header>
