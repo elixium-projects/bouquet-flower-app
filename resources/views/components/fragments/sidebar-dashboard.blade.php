@@ -14,7 +14,7 @@
         ],
         [
             'label' => 'Pengguna',
-            'route' => 'dashboard.user-management',
+            'route' => 'dashboard.users.index',
             'icon' => 'fa-solid fa-user',
         ],
         [
