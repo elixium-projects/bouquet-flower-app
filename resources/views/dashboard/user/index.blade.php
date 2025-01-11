@@ -41,7 +41,7 @@
                     <x-ui.table-td class="text-center">
                         <div class="flex items-center justify-center gap-4">
                             <x-ui.button type="button" buttonType="warning" class="rounded-lg !py-3 !px-4" x-data
-                                x-on:click="() => window.location.href = '{{ route('dashboard.product.edit', ['product' => $user->id]) }}'">
+                                x-on:click="() => window.location.href = '{{ route('dashboard.users.edit-page', ['user' => $user->id]) }}'">
                                 <x-slot:label>
                                     <i class="fa-solid fa-pencil size-4"></i>
                                 </x-slot:label>

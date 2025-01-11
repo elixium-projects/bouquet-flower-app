@@ -29,7 +29,9 @@ Route::prefix("products")->controller(ProductController::class)->group(function 
 Route::prefix("users")->controller(UserController::class)->group(function () {
     Route::get("/", "IndexPage")->name("dashboard.users.index");
     Route::get("/create", "CreatePage")->name("dashboard.users.create-page");
+    Route::get("/edit/{user}", "EditPage")->name("dashboard.users.edit-page");
     Route::post("/create", "UserCreate")->name("dashboard.users.create");
+    Route::put("/update/{user}", "UpdateUser")->name("dashboard.users.update");
     Route::delete("/delete/{user}", "DeleteUser")->name("dashboard.users.delete");
 });
 
