@@ -9,7 +9,9 @@
         <div class="mb-4">
             <h3 class="mb-6">Kelola User</h3>
             <div class="grid lg:grid-cols-[3fr_1fr] gap-6">
-                <x-ui.input-element type="search" placeholder="Masukan keyword nama untuk pencarian" />
+                <form action="{{ route('dashboard.users.index') }}" method="get" autocomplete="off">
+                    <x-ui.input-element type="search" name="search" placeholder="Masukan keyword nama untuk pencarian" />
+                </form>
                 <a href="{{ route('dashboard.users.create-page') }}"
                     class="flex items-center justify-center px-6 py-3 text-white rounded-lg bg-primary-500 gap-x-4">
                     <i class="fa-solid fa-plus"></i>

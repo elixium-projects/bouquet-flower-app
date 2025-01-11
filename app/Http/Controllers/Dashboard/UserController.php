@@ -18,10 +18,14 @@ class UserController extends Controller
 {
     use File;
 
-    public function IndexPage()
+    public function IndexPage(Request $request)
     {
+        $search = $request->query("search");
+
         $userLogin = Auth::user()->id;
-        $users = User::whereNot("id", $userLogin)->paginate(5);
+        $users = User::whereNot("id", $userLogin)->where("first_name", "like", "%" . $search . "%")->orWhere("last_name", "like", "%" . $search . "%")->paginate(5);
+
+        $users->appends(['search' => $search]);
 
         return view('dashboard.user.index', compact('users'));
     }
