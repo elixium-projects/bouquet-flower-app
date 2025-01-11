@@ -5,9 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Attribute;
+use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -26,7 +28,8 @@ class User extends Authenticatable
         'password',
         "phone_number",
         "role_id",
-        "address"
+        "address",
+        "profile_img"
     ];
     protected $with = "Role";
 
@@ -53,15 +56,30 @@ class User extends Authenticatable
         ];
     }
 
-    protected function getFullNameAttribute()
+    protected function FullName(): CastsAttribute
     {
-        $attribute = $this->attributes;
+        return CastsAttribute::make(
+            get: fn(mixed $value, array $attributes) => $attributes["first_name"] . " " . $attributes["last_name"],
+        );
+    }
 
-        return $attribute['first_name'] . " " . $attribute["last_name"];
+    public function profileURL(): CastsAttribute
+    {
+        return CastsAttribute::make(
+            get: function () {
+                $profileName = $this->profile_img;
+
+                if ($profileName == "profile.png") {
+                    return asset('img/profile.png');
+                }
+
+                return Storage::disk("public")->url("images/profile/" . $this->profile_img);
+            },
+        );
     }
 
     public function Role()
     {
-        return $this->hasOne(Role::class, "id");
+        return $this->hasOne(Role::class, "id", "role_id");
     }
 }

@@ -9,7 +9,8 @@
         ],
         [
             'label' => 'Pengguna',
-            'route' => 'dashboard.user-management',
+            'route' => 'dashboard.users.index',
+            'breadcrumbs' => ['Kelola Pengguna'],
         ],
         [
             'label' => 'Produk',
@@ -36,7 +37,10 @@
 <header class="px-8 py-6 bg-white drop-shadow">
     <div class="grid grid-cols-[6fr_1fr] gap-x-8 items-center">
         <ul class="breadcrumb">
-            <li class="breadcrumb-content">Menu</li>
+            <li class="breadcrumb-content">
+                <i class="mr-2 fa-solid fa-home"></i>
+                <span>Menu</span>
+            </li>
             @isset($activeMenu['breadcrumbs'])
                 @foreach ($activeMenu['breadcrumbs'] as $breadcrumb)
                     <li class="breadcrumb-content">{{ $breadcrumb }}</li>
