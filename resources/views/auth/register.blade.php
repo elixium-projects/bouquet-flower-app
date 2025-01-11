@@ -1,52 +1,64 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.auth')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required
-                autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('title', 'Login')
+
+@section('content')
+    <div class="grid min-h-screen grid-cols-2">
+        <div class="px-28 place-content-center">
+            <div class="mb-8">
+                <h2 class="mb-4">Daftar ke Yaya Flower</h2>
+                <p>Gabung untuk memesan buket bunga indah dan nikmati layanan eksklusif kami.</p>
+            </div>
+
+            <form action="{{ route('register') }}" method="post" autocomplete="off">
+                @csrf
+
+                <div class="mb-14">
+                    <div class="mb-4 space-y-2">
+                        <x-ui.input-label value="Nama depan" isRequired />
+                        <x-ui.input-element type="text" placeholder="Masukan nama depan" name="first_name" />
+                        <x-ui.input-error :messages="$errors->get('first_name')" />
+                    </div>
+                    <div class="mb-4 space-y-2">
+                        <x-ui.input-label value="Nama belakang" isRequired />
+                        <x-ui.input-element type="text" placeholder="Masukan nama belakang" name="last_name" />
+                        <x-ui.input-error :messages="$errors->get('last_name')" />
+                    </div>
+                    <div class="mb-4 space-y-2">
+                        <x-ui.input-label value="Nomor telepon" isRequired />
+                        <x-ui.input-element type="text" placeholder="Nomor telepon" name="phone_number" />
+                        <x-ui.input-error :messages="$errors->get('phone_number')" />
+                    </div>
+                    <div class="mb-4 space-y-2">
+                        <x-ui.input-label value="Alamat email" isRequired />
+                        <x-ui.input-element type="text" placeholder="Alamat email" name="email" />
+                        <x-ui.input-error :messages="$errors->get('email')" />
+                    </div>
+                    <div class="space-y-2">
+                        <x-ui.input-label value="Kata sandi" isRequired />
+                        <x-ui.input-element type="password" name="password" placeholder="Kata sandi" />
+                        <x-ui.input-error :messages="$errors->get('password')" />
+                    </div>
+                </div>
+
+                <x-ui.button type="submit" label="Daftar" class="w-full rounded-lg" />
+            </form>
+
+            <span class="block mt-8 text-center">Sudah punya akun ? <a href="{{ route('login') }}"
+                    class="text-primary-600">Masuk disini</a></span>
+
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="relative text-white bg-primary-600 place-content-center">
+            <div class="p-8">
+                <h1 class="mb-7 lg:max-w-[556px]">Selamat Datang Kembali di Yaya Flowers</h1>
+                <p class="lg:max-w-[556px]">Masuk untuk melanjutkan pengalaman berbelanja Anda. Akses produk favorit, cek
+                    status
+                    pesanan Anda, dan
+                    temukan buket bunga terbaik dengan mudah!</p>
+            </div>
+            <div class="w-[800px] h-[600px] overflow-hidden text-right ml-auto">
+                <img src="{{ asset('img/yaya-flower-macbook.png') }}" alt="macbook" class="object-cover w-full h-auto">
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required
-                autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block w-full mt-1" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

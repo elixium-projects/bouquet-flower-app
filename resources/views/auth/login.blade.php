@@ -38,7 +38,8 @@
                 <x-ui.button type="submit" label="Masuk" class="w-full rounded-lg" />
             </form>
 
-            <span class="block mt-8 text-center">Belum punya akun ? <a href="#" class="text-primary-600">Daftar
+            <span class="block mt-8 text-center">Belum punya akun ? <a href="{{ route('register') }}"
+                    class="text-primary-600">Daftar
                     disini</a></span>
         </div>
         <div class="relative text-white bg-primary-600 place-content-center">
@@ -50,7 +51,7 @@
                     temukan buket bunga terbaik dengan mudah!</p>
             </div>
             <div class="w-[800px] h-[600px] overflow-hidden text-right ml-auto">
-                <img src="{{ asset('img/yaya-flower-macbook.png') }}" alt="macbook" class="object-cover w-full h-full">
+                <img src="{{ asset('img/yaya-flower-macbook.png') }}" alt="macbook" class="object-cover w-full h-auto">
             </div>
         </div>
     </div>
