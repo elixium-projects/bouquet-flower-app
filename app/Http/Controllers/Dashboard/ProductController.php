@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function CreateProduct(Request $request)
     {
         $validate = $request->validate([
-            "thumbnail_product" => "file|mimes:png,jpg,jpeg|max:2048",
+            "thumbnail_product" => "file|mimes:png,jpg,jpeg,webp|max:2048",
             "product_name" => "required|regex:/^[a-zA-Z0-9 ]+$/u",
             "description" => "required|min:10",
             "price" => "required",

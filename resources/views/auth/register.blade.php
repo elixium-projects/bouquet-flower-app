@@ -34,10 +34,16 @@
                         <x-ui.input-element type="text" placeholder="Alamat email" name="email" />
                         <x-ui.input-error :messages="$errors->get('email')" />
                     </div>
-                    <div class="space-y-2">
+                    <div class="space-y-2 relative" x-data="{ showPassword: false }">
                         <x-ui.input-label value="Kata sandi" isRequired />
-                        <x-ui.input-element type="password" name="password" placeholder="Kata sandi" />
+                        <x-ui.input-element x-bind:type="showPassword ? 'text' : 'password'" name="password"
+                            placeholder="Kata sandi" />
+                        <button type="button" class="text-xl absolute right-[24px] top-[43%] text-surface-800"
+                            x-on:click="() => showPassword = !showPassword">
+                            <i x-bind:class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                        </button>
                         <x-ui.input-error :messages="$errors->get('password')" />
+
                     </div>
                 </div>
 

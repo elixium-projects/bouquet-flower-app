@@ -21,8 +21,8 @@ return new class extends Migration
             $table->foreignId("role_id")->references("id")->on("roles");
             $table->string('first_name');
             $table->string('last_name');
-            $table->string("phone_number");
-            $table->longText("address");
+            $table->string("phone_number")->nullable();
+            $table->longText("address")->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string("profile_img")->default("profile.png");

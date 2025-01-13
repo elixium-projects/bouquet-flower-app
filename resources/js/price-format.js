@@ -15,8 +15,17 @@ function formatRupiah(e) {
     }
 
     input.value = parts[1] !== undefined ? rupiah + "," + parts[1] : rupiah;
+
+    localStorage.setItem("inputPriceNumber", input.value);
 }
 
 inputPriceNumber.addEventListener("input", function (e) {
     formatRupiah(e);
+});
+
+window.addEventListener("DOMContentLoaded", function (e) {
+    const storedPrice = localStorage.getItem("inputPriceNumber");
+    if (storedPrice) {
+        inputPriceNumber.value = storedPrice;
+    }
 });
