@@ -24,7 +24,7 @@
         ],
         [
             'label' => 'Transaksi',
-            'route' => 'dashboard.transaction-management',
+            'route' => 'dashboard.transactions.index',
             'icon' => 'fa-solid fa-sack-dollar',
         ],
     ];
