@@ -27,6 +27,17 @@ MIDTRANS_SERVER_KEY=
 MIDTRANS_CLIENT_KEY=
 MIDTRANS_IS_PRODUCTION=
 ```
+Migration and then seeder
+
+```
+php artisan migrate
+```
+
+```
+php artisan db:seed
+```
+
+
 
 Running application
 
