@@ -19,6 +19,9 @@ class PaymentController extends Controller
         Config::$isProduction = config('midtrans.is_production');
         Config::$isSanitized = config('midtrans.is_sanitized');
         Config::$is3ds = config('midtrans.is_3ds');
+        Config::$curlOptions[CURLOPT_SSL_VERIFYHOST] = 0;
+        Config::$curlOptions[CURLOPT_SSL_VERIFYPEER] = 0;
+        Config::$curlOptions[CURLOPT_HTTPHEADER] = [];
 
         // Data transaksi
         $params = [
@@ -97,6 +100,4 @@ class PaymentController extends Controller
 
         return response()->json(['message' => 'Transaction status not found in the callback data'], 400);
     }
-
-
 }

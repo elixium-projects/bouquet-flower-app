@@ -4,14 +4,6 @@
 
 @section('content')
 
-    @if (session('message'))
-        <div
-            class="alert alert-success flex bg-green-500 p-3 text-white font-semibold w-[350px] rounded-lg text-center m-5 shadow-lg  ">
-            {{ session('message') }}
-            <i class="fa-solid fa-check mx-2 mt-1"></i>
-        </div>
-    @endif
-
     @if (session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
@@ -103,9 +95,11 @@
                     </div>
                 </div>
 
-                <div class="rounded-lg bg-primary-500 m-5 text-center p-2 text-white">
-                    <button onclick="payNow()" id="BayarSekarang" data-id="{{ $cart->id }}">Bayar Sekarang</button>
-                </div>
+                @isset($cart)
+                    <div class="rounded-lg bg-primary-500 m-5 text-center p-2 text-white">
+                        <button onclick="payNow()" id="BayarSekarang" data-id="{{ $cart->id }}">Bayar Sekarang</button>
+                    </div>
+                @endisset
 
             </div>
 
