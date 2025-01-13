@@ -3,11 +3,7 @@
     $menus = [
         [
             'label' => 'Data diri',
-            'href' => '#',
-        ],
-        [
-            'label' => 'Favorit',
-            'href' => '#',
+            'href' => route('profile.edit'),
         ],
         [
             'label' => 'Keranjang',
@@ -23,7 +19,7 @@
 <section class="relative">
     <div class="flex items-center cursor-pointer select-none gap-x-4" id="profile">
         <div class="h-[32px] w-[1px] bg-[#AFAFAF]"></div>
-        <img src="{{ $user->profileURL }}" class="rounded-full size-14" />
+        <img src="{{ $user->profileURL }}" class="rounded-full size-14 object-cover" />
         <h4 class="text-xl font-medium select-none">{{ $user->full_name }}</h4>
     </div>
 
@@ -35,7 +31,7 @@
 
         <div class="flex flex-col border-t border-gray-100">
             @foreach ($menus as $menu)
-                <a href="#" class="px-4 py-2">{{ $menu['label'] }}</a>
+                <a href="{{ $menu['href'] }}" class="px-4 py-2">{{ $menu['label'] }}</a>
             @endforeach
         </div>
 

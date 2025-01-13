@@ -47,13 +47,12 @@ class RegisteredUserController extends Controller
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            "address" => fake()->address(),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('/', absolute: false));
+        return to_route('home');
     }
 }
