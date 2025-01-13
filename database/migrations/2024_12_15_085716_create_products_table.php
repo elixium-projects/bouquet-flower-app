@@ -33,6 +33,18 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->references("id")->on("users");
             $table->foreignId("product_id")->references("id")->on("products");
+            $table->integer("quantity")->default(1);
+        });
+
+
+        Schema::create("transactions", function (Blueprint $table){
+            $table->id();
+            $table->foreignId("cart_id")->references("id")->on("carts");
+            $table->decimal("tax");
+            $table->decimal("total");
+            $table->string("payment_method");
+            $table->string("status");
+            $table->timestamps();
         });
     }
 

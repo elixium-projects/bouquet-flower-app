@@ -16,7 +16,7 @@
 
             <div class="flex items-center gap-x-[52px]">
                 @foreach ($menus as $menu)
-                    <a href={{ $menu['link'] }} class="capitalize">{{ $menu['label'] }}</a>
+                    <a href={{ $menu['link'] }} class="capitalize ">{{ $menu['label'] }}</a>
                 @endforeach
             </div>
 
