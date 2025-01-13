@@ -11,4 +11,10 @@ class ProductCategory extends Model
         "name"
     ];
     public $timestamps = false;
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

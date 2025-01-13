@@ -25,11 +25,11 @@
                         class="bg-primary-500 rounded-md hover:bg-black hover:text-white   text-white p-2 ">
                         Pesan Sekarang</a>
                 </div>
-                <div class="ms-2">
-                    <button
+                <div class="ms-2 mt-2">
+                    <a href="{{ route('Produk') }}"
                         class="border-solid border hover:bg-primary-500 hover:text-white  rounded-md border-primary-500 p-2"
                         type="submit">
-                        Cari Bouquetmu </button>
+                        Cari Bouquetmu </a>
                 </div>
             </div>
 
@@ -44,14 +44,14 @@
                 <h3 class="text-3xl text-customeBlue font-bold"> Produk</h3>
             </div>
             <div class="relative mt-1">
-                <!-- Input Field -->
-                <input type="text"
-                    class="border border-gray-300 rounded-md text-xs px-4 pl-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-                    placeholder="Cari Bouquetmu">
-
-                <!-- Icon -->
-                <i
-                    class="fa-solid fa-magnifying-glass text-gray-500 text-xs absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                <form id="search-form">
+                    <input type="text" id="search-input"
+                        class="border border-gray-300 rounded-md text-xs px-4 pl-10 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                        placeholder="Cari Bouquetmu">
+                    <button type="submit" class="absolute left-3 top-1/2 transform -translate-y-1/2 focus:outline-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-500 text-xs mb-3"></i>
+                    </button>
+                </form>
             </div>
 
 
@@ -60,62 +60,84 @@
         <!-- kategori -->
         <div>
             <div class=" flex ">
-                <h5
-                    class=" text-sm m-4 border-solid border border-second  rounded-lg hover:bg-primary-500 hover:text-white p-2 ">
-                    Semua</h5>
-                <h5
-                    class=" text-sm m-4 border-solid border border-second  rounded-lg hover:bg-primary-500 hover:text-white p-2 ">
-                    Bequet Bunga</h5>
-                <h5
-                    class=" text-sm m-4 border-solid border border-second  rounded-lg hover:bg-primary-500 hover:text-white p-2 ">
-                    Karangan Bunga</h5>
+                <h5 class="text-sm m-4 border-solid border border-second rounded-lg hover:bg-primary-500 hover:text-white p-2 cursor-pointer"
+                    onclick="filterProducts('all')">
+                    Semua
+                </h5>
+                @foreach ($categories as $category)
+                    <h5 class="text-sm m-4 border-solid border border-second rounded-lg hover:bg-primary-500 hover:text-white p-2 cursor-pointer"
+                        onclick="filterProducts('{{ $category->id }}')">
+                        {{ $category->name }}
+                    </h5>
+                @endforeach
             </div>
         </div>
 
         <!-- card produk -->
-        <div class="m-5 ">
-            <div class="grid grid-cols-4 gap-4 pb-5">
-                @for ($a = 0; $a <= 7; $a++)
-                    <div class="card border-solid drop-shadow-lg rounded-lg bg-surface-500">
-                        <img src="{{ asset('images/produk.png') }}" alt="img1" class=" rounded-lg">
-                        <h5 class="card-title m-2">Hot Romance</h5>
-                        <p class="m-2 flex justify-between">Rp.459.000 <span><i
-                                    class=" text-primary-500  fa-solid fa-cart-shopping m-2"></i></span></p>
-                    </div>
-                @endfor
-            </div>
+        <div class="m-5">
+            @if ($products->isEmpty())
+                <p class="text-center text-black p-5 font-semibold">Produk tidak tersedia</p>
+            @else
+                <div class="grid grid-cols-4 gap-4 pb-5">
+                    @foreach ($products as $product)
+                        <div class="card border-solid drop-shadow-lg rounded-lg bg-surface-500 w-[286px] h-[428px]"
+                            data-category="{{ $product->category_id }}">
+                            <img src="{{ $product->thumbnailURL }}" alt="img1" class="rounded-lg w-[286px] h-[336px]">
 
+                            <div class="flex justify-between">
+                                <div>
+                                    <h5 class="card-title m-2 text-[20px]">{{ $product->name }}</h5>
+
+                                    <div>
+                                        <p class="m-2 flex justify-between text-[20px]">{{ $product->price }}</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-primary-500 m-2 mt-6 rounded-full w-[56px] h-[56px] flex items-center justify-center">
+                                    <a href="{{ route('detailProduk', ['id' => $product->id]) }}"
+                                        class="w-[24px] h-[24px] flex items-center justify-center">
+                                        <i class="text-white fa-solid fa-cart-shopping"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
 
-        <div class="flex justify-center mt-4 pb-5">
+
+        {{-- pagination --}}
+        <div class="flex justify-center mt-10 pb-5">
             <nav aria-label="Pagination">
                 <ul class="inline-flex items-center">
 
                     <li>
-                        <a href="#" class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
+                        <a href="{{ $products->previousPageUrl() }}"
+                            class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
                             aria-label="Previous">
                             &laquo;
                         </a>
                     </li>
 
-
-                    @for ($a = 1; $a <= 25; $a++)
-                        @if ($a <= 3 || $a > 22)
+                    @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                        @if ($page <= 3 || $page > $products->lastPage() - 3)
                             <li>
-                                <a href="#" class="px-4 py-2 text-gray-500  hover:bg-gray-200 hover:text-gray-600">
-                                    {{ $a }}
+                                <a href="{{ $url }}"
+                                    class="px-4 py-2 {{ $page == $products->currentPage() ? 'text-black bg-blue-500' : 'text-gray-500 hover:bg-gray-200 hover:text-gray-600' }}">
+                                    {{ $page }}
                                 </a>
                             </li>
-                        @elseif ($a == 4)
+                        @elseif ($page == 4 || $page == $products->lastPage() - 3)
                             <li>
-                                <span class="px-4 py-2 text-gray-500  hover:bg-gray-200 hover:text-gray-600">...</span>
+                                <span class="px-4 py-2 text-gray-500">...</span>
                             </li>
                         @endif
-                    @endfor
-
+                    @endforeach
 
                     <li>
-                        <a href="#" class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
+                        <a href="{{ $products->nextPageUrl() }}"
+                            class="px-4 py-2 text-gray-500 bg-gray-100 hover:bg-gray-200 hover:text-gray-600"
                             aria-label="Next">
                             &raquo;
                         </a>
@@ -123,6 +145,24 @@
                 </ul>
             </nav>
         </div>
+
+        {{-- filter category --}}
+        <script>
+            function filterProducts(categoryId) {
+                const products = document.querySelectorAll(".card");
+                products.forEach((product) => {
+                    if (categoryId === "all" || product.dataset.category === categoryId) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            }
+        </script>
+
+    </div>
+
+
 
     </div>
 
@@ -183,7 +223,8 @@
                 <p class=" text-customeBlue">Temukan koleksi bouquet cantik yang telah kami siapkan untuk </p>
                 <p class=" text-customeBlue">momen spesial Anda.</p>
                 <div class="mt-3">
-                    <a href="{{ route('Gallery') }}" class=" text-white rounded-md hover:bg-black bg-primary-500  p-2">Lihat
+                    <a href="{{ route('Gallery') }}"
+                        class=" text-white rounded-md hover:bg-black bg-primary-500  p-2">Lihat
                         Semua</a>
                 </div>
 
