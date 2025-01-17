@@ -32,7 +32,7 @@
 
 <aside class="bg-white drop-shadow">
     <header class="py-8 px-9">
-        <img src="{{ asset('logo.svg') }}" alt="">
+        <img src="{{ asset('images/Logo_PNG.png') }}" alt="logo">
     </header>
     <div class="px-8 py-4">
         <h5 class="text-lg text-primary-400">Menu</h5>
