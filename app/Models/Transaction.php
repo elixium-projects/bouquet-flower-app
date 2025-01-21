@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
@@ -20,6 +22,13 @@ class Transaction extends Model
     // Relasi ke tabel Cart
     public function cart()
     {
-        return $this->hasOne(Cart::class, 'cart_id');
+        return $this->hasOne(Cart::class, 'id', "cart_id");
+    }
+
+    public function createdAtDateFormat(): Attribute
+    {
+        return Attribute::make(
+            fn() => Carbon::parse($this->created_at)->format("Y-m-d"),
+        );
     }
 }

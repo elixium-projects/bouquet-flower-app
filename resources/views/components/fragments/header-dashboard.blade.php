@@ -24,7 +24,8 @@
         ],
         [
             'label' => 'Transaksi',
-            'route' => 'dashboard.transaction-management',
+            'route' => 'dashboard.transactions.index',
+            'breadcrumbs' => ['Kelola Transaksi'],
         ],
     ];
 
