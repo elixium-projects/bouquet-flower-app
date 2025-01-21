@@ -29,7 +29,7 @@ class Role
         }
 
         if ($user->Role->name != $target) {
-            return abort(401);
+            return redirect()->back();
         }
 
         return $next($request);

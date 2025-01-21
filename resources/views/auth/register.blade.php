@@ -34,10 +34,16 @@
                         <x-ui.input-element type="text" placeholder="Alamat email" name="email" />
                         <x-ui.input-error :messages="$errors->get('email')" />
                     </div>
-                    <div class="space-y-2">
+                    <div class="space-y-2 relative" x-data="{ showPassword: false }">
                         <x-ui.input-label value="Kata sandi" isRequired />
-                        <x-ui.input-element type="password" name="password" placeholder="Kata sandi" />
+                        <x-ui.input-element x-bind:type="showPassword ? 'text' : 'password'" name="password"
+                            placeholder="Kata sandi" />
+                        <button type="button" class="text-xl absolute right-[24px] top-[43%] text-surface-800"
+                            x-on:click="() => showPassword = !showPassword">
+                            <i x-bind:class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+                        </button>
                         <x-ui.input-error :messages="$errors->get('password')" />
+
                     </div>
                 </div>
 
@@ -48,7 +54,7 @@
                     class="text-primary-600">Masuk disini</a></span>
 
         </div>
-        <div class="relative text-white bg-primary-600 place-content-center">
+        <div class="relative text-white bg-primary-600 place-content-center flex items-center">
             <div class="p-8">
                 <h1 class="mb-7 lg:max-w-[556px]">Selamat Datang Kembali di Yaya Flowers</h1>
                 <p class="lg:max-w-[556px]">Masuk untuk melanjutkan pengalaman berbelanja Anda. Akses produk favorit, cek
@@ -56,8 +62,8 @@
                     pesanan Anda, dan
                     temukan buket bunga terbaik dengan mudah!</p>
             </div>
-            <div class="w-[800px] h-[600px] overflow-hidden text-right ml-auto">
-                <img src="{{ asset('img/yaya-flower-macbook.png') }}" alt="macbook" class="object-cover w-full h-auto">
+            <div class="size-52 overflow-hidden">
+                <img src="{{ asset('images/Logo_PNG.png') }}" alt="logo" class="object-cover w-full h-auto">
             </div>
         </div>
     </div>

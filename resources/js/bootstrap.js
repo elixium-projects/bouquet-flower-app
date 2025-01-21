@@ -3,7 +3,7 @@ window.axios = axios;
 
 const csrfTokenContent = document
     .querySelector("meta[name='csrf-token']")
-    .getAttribute("content");
+    ?.getAttribute("content");
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 

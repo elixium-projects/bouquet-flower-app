@@ -1,4 +1,4 @@
-export function PreviewImage(event) {
+function PreviewImage(event) {
     const target = event.target;
 
     if (target.files.length > 0) {
@@ -6,6 +6,7 @@ export function PreviewImage(event) {
         const imgFileUpload = document.querySelector(
             "img#image_upload_preview"
         );
+        console.log(src);
         imgFileUpload.src = src;
 
         if (imgFileUpload.classList.contains("hidden")) {
