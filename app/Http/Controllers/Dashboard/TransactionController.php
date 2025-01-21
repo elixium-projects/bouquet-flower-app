@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Transaction;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
     public function IndexPage()
     {
-        return view('dashboard.transaction.index');
+        $transactions = Transaction::with(["cart", "cart.user"])->get();
+
+        return view('dashboard.transaction.index', compact('transactions'));
     }
 }
