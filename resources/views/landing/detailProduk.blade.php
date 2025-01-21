@@ -56,7 +56,7 @@
                     </div> --}}
 
                     <div class="flex items-center mt-8">
-                        @production
+                        @if (auth()->check())
                             <div class="flex items-center border border-surface-700 rounded-lg me-6">
                                 <button type="button"
                                     class="bg-gray-200 px-6 py-2 text-gray-700 bg-surface-700 rounded-l focus:outline-none"
@@ -68,20 +68,7 @@
                                     onclick="increase()">+</button>
                             </div>
 
-                            <form action="{{ route('keranjangBelanja') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="quantity" value="1" id="quantityField">
-                                <input type="hidden" id="maxStock" value="{{ $product->stock }}">
 
-                                <button type="submit"
-                                    class="w-[303px] h-[48px] bg-primary-500 text-center p-3 rounded-lg text-[16px] text-white">
-                                    Tambah Ke Keranjang
-                                </button>
-                            </form>
-                        @endproduction
-
-                        {{-- @if (auth()->check())
                             <form action="{{ route('keranjangBelanja') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -101,7 +88,7 @@
                                     Tambah Ke Keranjang
                                 </a>
                             </div>
-                        @endif --}}
+                        @endif
 
                     </div>
 
